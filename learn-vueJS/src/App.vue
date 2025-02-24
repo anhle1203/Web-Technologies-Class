@@ -6,7 +6,7 @@
         <span>Name:</span>
         <span>
           <!-- formData.name is synced after "change" event instead of "input" event. -->
-          <input type="text" v-model.lazy="formData.name" />
+          <input type="text" v-model.lazy="formData.name" /> <!-- .lazy: sync after change events-->
         </span>
       </div>
       <div>
@@ -22,7 +22,7 @@
         <span>Age:</span>
         <span>
           <!-- Input is automatically typecast as a number. -->
-          <input type="text" id="age" v-model.number="formData.age" />
+          <input type="text" id="age" v-model.number="formData.age" /> <!-- .number: typecast as number -->
         </span>
       </div>
       <div>
@@ -49,9 +49,9 @@
         <span>Description:</span>
         <!-- Leading and trailing whitespace is removed automatically. -->
         <textarea
-          v-model.trim="formData.desc"
-          @keyup.enter="submitForm"
-        ></textarea>
+          v-model.trim="formData.desc"  
+          @keyup.enter="submitForm" 
+        ></textarea> <!-- .trim: trims leading and trailing whitespace; @keyup.enter = key modifier -->
       </div>
       <div>
         <input type="reset" value="Reset" @click="resetForm" />
@@ -74,8 +74,7 @@
     profession: '',
     desc: ''
   })
-  
-  function resetForm() {
+  function resetForm() {  // formData is already a ref object. no need to indicate in later function
     formData.value = {
       name: '',
       gender: '',
@@ -83,11 +82,11 @@
       hobbies: [],
       profession: '',
       desc: ''
-    }
+    } 
   }
   
   function submitForm() {
-    console.log(JSON.stringify(formData.value))
+    console.log(JSON.stringify(formData.value)) // Return the value of ref object
     // We can use axios or fetch() to submit data to the back end.
   }
   </script>
