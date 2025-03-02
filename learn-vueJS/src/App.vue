@@ -47,7 +47,7 @@
     console.log(number.value) // The ref data works.
     console.log(title.value) // Since the component has not yet been mounted, you won't have access to the component's template or DOM elements within onBeforeMount.
   })
-  onMounted(() => {
+  onMounted(() => { // Fetch data from remote APIs
     console.log('App component is mounted.')
     console.log(title.value) // This works once the component is mounted.
   })
@@ -58,13 +58,18 @@
   onBeforeUpdate(() => {
     console.log('App component is before update.')
   })
-  onUpdated(() => {
+  onUpdated(() => { // Apply third-party plugins, focus elements for accessibility, perform animations, log and debug, or measure performance
     console.log('App component is updated.')
   })
   onBeforeUnmount(() => {
     console.log('App component is before unmount.')
   })
-  onUnmounted(() => {
+  /*
+  A component is considered unmounted after:
+  1. All of its child components have been unmounted
+  2. All of its associated reactive effects have been stopped
+  */
+  onUnmounted(() => { // Clean up things like timers, DOM event listerners, or server connections
     console.log('App component is unmounted.')
   })
   watch(number, () => {
