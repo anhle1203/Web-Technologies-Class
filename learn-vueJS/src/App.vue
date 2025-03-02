@@ -51,6 +51,10 @@
     console.log('App component is mounted.')
     console.log(title.value) // This works once the component is mounted.
   })
+  /* A component is considered mounted after:
+    1. All of its synchronous child compoenents have been mounted
+    2. Its own DOM tree has been created and inserted into the parent container
+  */
   onBeforeUpdate(() => {
     console.log('App component is before update.')
   })
