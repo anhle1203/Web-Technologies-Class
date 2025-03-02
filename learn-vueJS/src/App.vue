@@ -1,8 +1,12 @@
 <!-- Life cycle of Vue JS applications
- 1. Set up the data observation
+ 1. Set up the data observation (entry/setup())
  2. Compile template
  3. Mount itself to DOM
  4. Update the DOm
+
+ Vue Lifecycle States:
+ Setup ==> Before mount ==> Mounted ==> Before update ==> Updated ==> Mounted (cycle)
+                      (after cycle) ==> Before unmount ==> Unmounted`
  -->
  <template>
     <h1>{{ message }}</h1>
